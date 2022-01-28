@@ -5,6 +5,7 @@ lwy=0;
 rwx=0;
 rwy=0;
 slw=0;
+srw=0;
 song1_status="";
 song2_status="";
 
@@ -14,7 +15,7 @@ song2= loadSound("music2.mp3");
 }
 
 function setup(){
-canvas=createCanvas(600,500)
+canvas=createCanvas(620,520)
 canvas.center()
 
 video= createCapture(VIDEO);
@@ -45,7 +46,7 @@ console.log("rwx="+rwx+"rwy="+rwy);
 }
 
 function draw(){
-    image(video, 0, 0, 600, 500);
+    image(video, 0, 0, 620, 520);
 
     song1_status = song1.isplaying();
 
@@ -57,11 +58,25 @@ function draw(){
     if(slw>0.2){
     circle(lwx,lwy,20);
     song1.stop
+    document.getElementById("Song").innerHTML="Song 2 is playing"
+    song2.play
+
+    if (song1.isPlaying=false) {
+        document.getElementById("Song").innerHTML="Song 2 is playing"
+        song2.play  
+    }
     }
 
     if(srw>0.2){
         circle(rwx,rwy,20);
         song2.stop
+        document.getElementById("Song").innerHTML="Song 1 is playing"
+        song1.play
+
+        if (song2.isPlaying=false) {
+            document.getElementById("Song").innerHTML="Song 1 is playing"
+            song1.play  
+        }
         }
 }
 
